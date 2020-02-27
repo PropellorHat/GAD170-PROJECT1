@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7262363185501075760}
   - component: {fileID: 7535637096723375025}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Coin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinSpeed: 100
-  scoreToAdd: 1
+  scoreToAdd: 5
   scoreText: {fileID: 0}
 --- !u!136 &7535637096723375025
 CapsuleCollider:
@@ -119,7 +119,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54ec15a612d88144b90b486bc4eac10c, type: 2}
+  - {fileID: 2100000, guid: 902409ad6feaa734baa8b6825239c780, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

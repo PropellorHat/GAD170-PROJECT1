@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float xp = 0;	// Amount of XP the player has
     public float xpForNextLevel = 10;   //Xp needed to level up, the higher the level, the harder it gets. 
     public int level = 0;   // Level of the player
+
+    public Text xpText;
+    public Text levelText;
 
 
 
@@ -63,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         xp = 0f;
         level++;
-        Debug.Log("level" + level);
+        levelText.text = "level: " + level;
         SetXpForNextLevel();
         SetCurrentMoveSpeed();
         SetCurrentTurnSpeed();
@@ -74,10 +78,10 @@ public class PlayerController : MonoBehaviour
 
 
     //a function to make the player gain the ammount of Xp the you tell it. 
-    void GainXP(int xpToGain)
+    public void GainXP(int xpToGain)
     {
         xp += xpToGain;
-        Debug.Log("Gained " + xpToGain + " XP, Current Xp = " + xp + ", XP needed to reach next Level = " + xpForNextLevel);
+        xpText.text = "Gained " + xpToGain + " XP, Current Xp = " + xp + ", XP needed to reach next Level = " + xpForNextLevel;
     }
 
 
@@ -107,6 +111,8 @@ public class PlayerController : MonoBehaviour
         // Identify this position, set the vertical axis as the axis to rotate around the set the rotation speed.
         if (Input.GetKey(KeyCode.RightArrow) == true) { this.transform.RotateAround(this.transform.position, Vector3.up, currentTurnSpeed * Time.deltaTime); }
         if (Input.GetKey(KeyCode.LeftArrow) == true) { this.transform.RotateAround(this.transform.position, Vector3.up, -currentTurnSpeed * Time.deltaTime); }
+
+
 
     }
 }
