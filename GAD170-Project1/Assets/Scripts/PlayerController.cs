@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     //The base move and turn speed
     public float moveSpeed = 1f;
     public float turnSpeed = 45f;
+    public float jumpHeight = 700f;
 
     //The move and turn speed with the buffs you have from leveling up.   
     public float currentMoveSpeed;
     public float currentTurnSpeed;
+    public float currentJumpHeight;
 
 
 
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         SetXpForNextLevel();
         SetCurrentMoveSpeed();
         SetCurrentTurnSpeed();
+        SetCurrentJumpHeight();
     }
 
 
@@ -62,6 +65,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log("currentTurnSpeed = " + currentTurnSpeed);
     }
 
+    void SetCurrentJumpHeight()
+    {
+        currentJumpHeight = this.jumpHeight + (this.jumpHeight * 0.1f * level);
+        Debug.Log("currentJumpHeight = " + currentJumpHeight);
+    }
+
 
     void LevelUp()
     {
@@ -71,7 +80,7 @@ public class PlayerController : MonoBehaviour
         SetXpForNextLevel();
         SetCurrentMoveSpeed();
         SetCurrentTurnSpeed();
-
+        SetCurrentJumpHeight();
     }
 
 
@@ -112,7 +121,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) == true) { this.transform.RotateAround(this.transform.position, Vector3.up, currentTurnSpeed * Time.deltaTime); }
         if (Input.GetKey(KeyCode.LeftArrow) == true) { this.transform.RotateAround(this.transform.position, Vector3.up, -currentTurnSpeed * Time.deltaTime); }
 
-
+        if (Input.GetButtonDown("Jump"))
+        {
+            GetComponent<Rigidbody>().AddForce(currentJumpHeight * Vector3.up);
+        }
 
     }
 }
